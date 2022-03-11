@@ -85,6 +85,12 @@
     font-weight: bolder;
 }
 
+#spotify {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
 /* para tablet */
 @media screen and (min-width: 768px) {
     .description-film{
@@ -106,6 +112,11 @@
   
     #poster{
       width: 35%;
+    }
+  
+    #spotify {
+      max-width: 500px;
+      margin: 0 auto;
     }
 }
 
@@ -129,5 +140,11 @@
     #poster{
       min-height: 450px;
       padding-bottom: 0px;
+    }
+
+    #spotify {
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 20px;
     }
 }
