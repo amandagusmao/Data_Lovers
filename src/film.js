@@ -1,4 +1,5 @@
 import data from './data/ghibli/ghibli.js';
+import music from './spotify.js';
 
 // função find
 const numMovie = window.location.search.replace("?id=", "");
@@ -27,3 +28,21 @@ anime.people.forEach((person) => {
     </div>
     `
 });
+
+const musicId = music.playlist.find((buscarId) => {
+    return buscarId.id === anime.id
+});
+
+const spotify = `
+    <iframe
+        style="border-radius:12px"
+        id="test"
+        src="${musicId.spotifyLink}"
+        width="100%"
+        height="80"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay;clipboard-write;encrypted-media;fullscreen;picture-in-picture">
+    </iframe>`;
+
+document.getElementById('spotify').innerHTML = spotify;
