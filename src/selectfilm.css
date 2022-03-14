@@ -44,6 +44,14 @@
     justify-content: space-evenly;
     margin: 0 auto;
   }
+
+  .aviso {
+    text-align: center;
+    color: #C1D9B0;
+    font-weight: bolder;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
   
   .character {
     background-color: #D9D271;
