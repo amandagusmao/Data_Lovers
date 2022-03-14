@@ -1,5 +1,6 @@
 import data from './data/ghibli/ghibli.js';
 import music from './spotify.js';
+import { filterFemale, filterMale, filterNA } from './data.js';
 
 // função find
 const numMovie = window.location.search.replace("?id=", "");
@@ -15,18 +16,53 @@ document.getElementById("produtor").innerHTML = "PRODUTOR: " + anime.producer;
 document.getElementById("ano").innerHTML = "LANÇAMENTO: " + anime.release_date;
 document.getElementById("nota").innerHTML = "NOTA: " + anime.rt_score;
 
-anime.people.forEach((person) => {
-    document.querySelector(".personagens").innerHTML += `
-    <div class="character">
-        <p class="name">${person.name}</p>
-        <div class="imgwrapper">
-            <img class="foto" src="${person.img}"/>
+function printTela(data){
+    document.querySelector(".personagens").innerHTML = "";
+
+    if (data.length === 0) {
+        document.querySelector(".personagens").innerHTML = `
+            <p class="aviso">Não há personagens de outros gêneros nesse filme!</p>
+        `
+    };
+    
+    data.forEach((person) => {
+        document.querySelector(".personagens").innerHTML += `
+        <div class="character">
+            <p class="name">${person.name}</p>
+            <div class="imgwrapper">
+                <img class="foto" src="${person.img}"/>
+            </div>
+            <p class="text-person">Gênero: ${person.gender}</p>
+            <p class="text-person">Idade: ${person.age}</p>
+            <p class="text-person">Espécie: ${person.specie}</p>
         </div>
-        <p class="text-person">Gênero: ${person.gender}</p>
-        <p class="text-person">Idade: ${person.age}</p>
-        <p class="text-person">Espécie: ${person.specie}</p>
-    </div>
-    `
+        `
+    });
+}
+
+printTela(anime.people);
+
+const characters = anime.people;
+
+const order = document.getElementById("order");
+
+order.addEventListener("change", (event) => {
+    const selectOrder = event.target.value;
+    if (selectOrder === "Female") {
+        const filterCharacter = filterFemale(characters);
+        printTela(filterCharacter);
+    }
+    if (selectOrder === "Male") {
+        const filterCharacter = filterMale(characters);
+        printTela(filterCharacter);
+    }
+    if (selectOrder === "NA") {
+        const filterCharacter = filterNA(characters);
+        printTela(filterCharacter);
+    }
+    if (selectOrder === "All") {
+        printTela(characters);
+    }
 });
 
 const musicId = music.playlist.find((buscarId) => {
