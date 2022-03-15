@@ -50,3 +50,18 @@ export const filterNA = (characters) => {
       return character.gender === "NA";
   })
 };
+
+export const porc = (filmes) => {
+  //cálculo agregado
+  const total = filmes.reduce((acc, film) => {
+    const personagens = film.people;
+    const totalFemale = filterFemale(personagens).length;
+
+    return {
+      total: acc.total + personagens.length,
+      female: acc.female + totalFemale,
+    }
+  }, { total: 0, female: 0 });
+
+  return (total.female / total.total * 100).toFixed(2);
+};

@@ -1,5 +1,5 @@
 //teste função sort/ordenar filmes
-import { filmOrder, filterFemale, filterMale, filterNA, filterMovie } from '../src/data.js';
+import { filmOrder, filterFemale, filterMale, filterNA, filterMovie, porc } from '../src/data.js';
 
 
 describe("filmOrder ordena uma lista de filmes", () => {
@@ -257,5 +257,49 @@ describe("Busca filmes pelo título", () => {
         title: "CASTLE IN THE SKY",
       }
     ]);
+  });
+});
+
+describe("Retorna a porcentagem de personagens femininos", () => {
+  it("deve retornar a porcentagem do gênero", () => {
+    const data = [
+      {
+        title: 'Castle in the Sky',
+        people: [
+            {
+                gender: 'Male',
+            },
+            {
+                gender: 'Female',
+            }
+        ],
+      },
+      {
+        title: 'Porco Rosso',
+        people: [
+            {
+                gender: 'Female',
+            },
+            {
+                gender: 'Female',
+            }
+        ],
+      },
+      {
+        title: 'The Cat Returns',
+        people: [
+            {
+                gender: 'Male',
+            },
+            {
+                gender: 'Female',
+            }
+        ],
+      },
+    ];
+    
+    const porcentagem = porc(data);
+
+    expect(porcentagem).toBe("66.67");
   });
 });
