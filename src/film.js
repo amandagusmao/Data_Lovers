@@ -22,8 +22,8 @@ function printTela(data){
     if (data.length === 0) {
         document.querySelector(".personagens").innerHTML = `
             <p class="aviso">Não há personagens de outros gêneros nesse filme!</p>
-        `
-    };
+        `;
+    }
     
     data.forEach((person) => {
         document.querySelector(".personagens").innerHTML += `

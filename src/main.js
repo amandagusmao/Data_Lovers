@@ -1,4 +1,4 @@
-import { filmOrder, filterMovie, filterFemale } from './data.js';
+import { filmOrder, filterMovie, porc } from './data.js';
 import data from './data/ghibli/ghibli.js';
 
 // printar os filmes na tela
@@ -45,16 +45,4 @@ btn.addEventListener("click", function () {
 });
 
 //cálculo agregado
-const total = filmes.reduce((acc, film) => {
-    const personagens = film.people;
-    const totalFemale = filterFemale(personagens).length;
-  
-    return {
-      total: acc.total + personagens.length,
-      female: acc.female + totalFemale,
-    }
-}, { total: 0, female: 0 });
-
-const porc = (total.female / total.total * 100).toFixed(2);
-
-console.log(porc);
+document.querySelector(".porcentagem").innerHTML = "CURIOSIDADE: A porcentagem de personagens femininos dos Estúdios Ghibli é de " + porc(filmes) + "%.";

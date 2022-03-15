@@ -52,6 +52,14 @@
     border-radius: 10px;
 }
 
+.porcentagem {
+  color: #C1D9B0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
 .img-te {
     width: 100%;
     position: relative;
